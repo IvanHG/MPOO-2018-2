@@ -1,0 +1,137 @@
+//operadores matematios
+
+(28.0).truncatingRemainder(dividingBy: 10.0)
+
+//operaiones matematicas
+
+sin (45 * Double.pi) / 180
+cos(135 * Double.pi) / 180
+
+(2.0).squareRoot()
+
+max(44, 23)
+min(44, 23)
+
+var x = 1
+x += 1
+x -= 1
+
+//Tipos y operaciones
+
+var entero: Int = 80
+var decimal: Double = 3.1415
+
+entero = Int(decimal)  //inicializador, se hace una conversion de tipo de dato
+print(entero)
+
+print(type(of:decimal))
+print(decimal)
+
+//Strings (unicode)
+
+var cadena1 = "A"  //se concidera como cadena o string
+print(type(of: cadena1))
+
+var characterA : Character = "A"
+print(type(of: characterA))
+
+
+//Concatenar
+
+var mensaje = "Hola" + "Mundo"  //Overload concatenator
+
+var name = "Ivan"
+mensaje += name  //Sobrecarga de operadores
+print (mensaje)
+
+//Multilinea
+
+var multilinea = """
+linea 1
+linea 2
+linea 3
+"""
+print(multilinea)
+
+let coordinates: (Int,Int) = (2, 3) //en las tuplas tenemos indices para ordenar los datos
+var coordX = coordinates.0
+var coordY = coordinates.1  //se accede a los datos que contiene la tupla
+
+let coordinatesNamed = (x: 5, y: 10)
+var coordNamedX = coordinatesNamed.x
+var coordNamedY = coordinatesNamed.y
+
+
+let coordinates3D = (x: 3, y: 5, z: 20)
+let (x3, y3, z3) = coordinates3D
+
+let (x4, y4, _) = coordinates3D //solo se asignan los primeros dos valores
+
+//Garndes Numeros
+
+let a: Int16 = 12
+let b: Int32 = -100000
+
+//operadores de comparacion (control de flujo)
+
+let yes: Bool = true
+let no:Bool = false
+
+let noEsIgual = (1==2)
+let unoNoEsIgualA = (1 != 2)
+
+!(1 == 2)
+(1 < 2)
+(1 > 2)
+
+// Logica Booleana
+
+(true && true)
+(true || false)
+(1 < 2 && 3 > 4) || 1 < 4
+
+("gato" == "perro")
+("gato" > "Perro")
+
+
+// Estructuras de control
+
+let animal = "fox"
+
+if animal == "cat" || animal == "dog" {
+    print ("tienes una mascota de casa" )}
+
+
+
+
+let hourOfDay = 12
+let timeOfDay: String
+
+if hourOfDay < 5 {
+    timeOfDay = "muy temprano"
+} else if hourOfDay < 12 {
+    timeOfDay = "temprano"
+} else if hourOfDay < 17{
+    timeOfDay = "tardecito"
+} else if hourOfDay < 20 {
+    timeOfDay = "tarde-noche"
+} else if hourOfDay < 24 {
+    timeOfDay = "Ya es muy noche"
+} else {
+    timeOfDay = "Hora invalida"
+}
+print (timeOfDay)
+
+
+var hoursWorked = 45
+var price = 0
+
+if hoursWorked > 40 {
+    let hoursOver40 = hoursWorked - 40   //encapsulamiento de variables
+    price += hoursOver40 * 50
+    hoursWorked -= hoursOver40
+}
+price += hoursWorked * 25
+print(price)
+//print(hoursOver40) la variable solo es valida en el if por tal motvo no puede imprimir 
+
