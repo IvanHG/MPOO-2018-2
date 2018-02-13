@@ -1,0 +1,156 @@
+//: Rangos
+
+let rangoCerrado = 0...5
+let rango = 1..<5
+
+//: Switch and Case
+
+let edad = 19
+switch edad{
+    case 18:
+        print("eres un puberto")
+default:
+    print("pasale")
+}
+
+let animal = "perro"
+
+switch animal{
+case "perro", "gato":
+    print("es un nimal de casa")
+default:
+    print("no es de casa")
+    
+}
+
+switch edad{
+case 0..<18:
+    print("eres un puberto")
+case 19...31:
+    print("eres un milenial")
+default:
+    break //puede terminar el prigrama o sacarnos de la funcion si no lo usamos adecuadamente
+}
+
+switch edad{
+case _ where edad % 2 == 0: //switch por seleccion
+    print("entra")
+default:
+    break
+}
+
+
+//: Ciclo while
+
+var edad1 = 18
+while edad >= 18 {
+    print("bienvenido")
+    break
+}
+
+//: Repeat - while
+
+var suma = 0
+repeat{
+    suma += 1
+}while suma < 100
+
+
+//: ciclo for
+
+var suma1 = 0
+
+for _ in 1...100 {
+    suma += 1
+}
+
+//: Funciones
+
+func nomFuncion(){
+    print("Hola")
+}
+nomFuncion()
+
+//:Funciones con parametros
+
+func conParametros (value: Int){
+    print("el parametro fue \(value)")
+}
+conParametros(value: 10)
+
+func conParametros2 (_ value: Int){
+    print("el parametro fue \(value)")
+}
+conParametros2(8)
+
+func conParametros3(valor value: Int){
+    print("El parametro fue \(value)")
+}
+conParametros3(valor: 20)
+
+func printMultiplerOf(multiplier: Int, and value: Int){
+    print("\(multiplier) * \(value) = \(multiplier * value)")
+}
+printMultiplerOf(multiplier: 4, and: 2)
+
+
+//: Regreso de parametros
+
+func multiplica(_ a: Int, por b: Int) -> Int{
+    return a * b
+}
+multiplica(3, por: 5)
+
+func divide(_ a: Int, entre b: Int ) -> (resultado: Int, residuo: Int){
+    return (a/b, a%b)
+}
+
+let resultados = divide(15, entre: 4)
+let residuo = resultados.residuo
+let elResultado = resultados.resultado
+
+
+//: Uso avanzadode funiones con oparametros
+func incrementa(_ value: inout Int){
+    value += 1
+    print(value)
+    print("el valor inrementado en la funion es: \(numero)")
+}
+var numero = 3
+incrementa(&numero)
+print("el valor fuera de la funion es: \(numero)")
+
+//EJERCICIOS
+/*
+func factorial(numero: Int) -> Int{
+    while numero >= 1{
+ 
+        var resultado = numnero * numero - 1
+    }
+    return resultado
+}*/
+
+let numero = 10
+var factorial = 1
+for i in 1...numero{
+    factorial = factorial * i
+}
+print (factorial)
+
+/*func fibonacci(terminos: Int) -> [Int]{
+    var serie = [0,1]
+    if terminos <= 1 {
+        return serie
+    }
+    
+}*/
+
+var n1 = 1
+var n2 = 1
+var nn = 0
+var totalNumeros = 20
+
+while totalNumeros > 0 {
+    nn = n1 + n2
+    n1 = n2
+    totalNumeros -= 1
