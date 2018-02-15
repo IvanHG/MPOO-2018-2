@@ -1,0 +1,97 @@
+//: Overloading
+//sobre carga de funciones
+//un operador se comporta de diferente froma
+
+func getValue() -> Int{
+    return 4
+}
+
+func getValue() -> String{
+    return "Hola mundo"
+}
+
+
+func divide(_ x: Int, entre y: Int) -> Int{
+    return x/y
+}
+
+func divide(_ x: Int, entre y: Int) -> (resultado: Int, residuo: Int){
+    return (x/y, x%y)
+}
+
+//var resultado = divide(4,entre: 2) ...no sabe cual funcion usar
+
+//:Funciones como variables
+
+func suma (a: Int, b:Int) -> Int{
+    return a+b
+}
+
+var variable = suma    //la variable se vuelve una funcion
+variable(3, 4)         //variable se comporta como la funcion suma
+
+
+
+func imprimeResultado(_ funcion: (Int, Int) -> Int, _ x: Int, _ y: Int){
+    print (funcion (x, y))
+}
+
+imprimeResultado(variable,10,20)
+
+//numeros primos
+
+func isPrime(_ n: Int) -> Bool{
+    var isPrime = true
+    
+    for i in 2...n-1 {
+        if n % i == 0{
+            isPrime = false
+            break
+        }
+    }
+    return isPrime
+}
+
+isPrime(8)
+
+
+//: Optionals
+//uso y manejo de nil
+
+var errororCode: Int? = nil   //envolvemos el regalo en la variable
+
+//errororCode = 4
+//print(errororCode!) //desenvolvemos la variable y accedemos al contenido ("desenvolvimiento forzado")
+                    //desenvolvimiento forzado solo cuando estamos seguros que existe un valor
+
+//: Optional-Bindidng
+
+if let errorNil = errororCode{
+    print("hubo un error de tipo: \(errorNil)")
+}else{
+    print("No hubo error")
+}
+
+
+//:Operador Guard
+/*
+guard let test = errororCode else { se necesita salir y continuar con el programa
+    
+}*/
+
+func testError(error: Int?){
+    guard let test = error else {
+        print("Hubo un nil y me sali")
+        return
+    }
+    print("No hubo nil y el valor es: \(test)")
+}
+
+testError(error: errororCode)
+
+//: Nil coalescing
+
+errororCode = 15
+var errorSegundaPrueba = errororCode ?? 10 //se indica que es un nil coalescente
+print("ErrorCode me dio este valor: \(errorSegundaPrueba)")
+
