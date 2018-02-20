@@ -1,1 +1,144 @@
+//:Arrreglos
+
+var arreglo = [1, 2, 3, 4, 5, 6, 7]
+var alumnos: [String] = ["Ivan", "Pam", "Tannya"] //coleccion de direcciones de memoria
+var profesores : [String] = []
+
+var alumno = alumnos [1]
+print(alumnos)
+
+alumnos.contains("Pam")
+alumnos += ["Angel","Dany"]
+alumnos.append("Abneriz")
+
+// Los arreglos llevan un orden, el que nosotros le demos, siemore van en orden
+
+//: Diccionarios
+//Los diccionaris no son ordenados
+
+var diccionario = ["Pam": 1000, "Ivan": 1, "Abni": 3] //coleccion de datos clave: valor
+print(diccionario)
+
+var diccionarioVacio: [String: Int] = [:]
+print(diccionario["Pam"]! as Any)
+diccionario.isEmpty
+
+var alumnoDic = [
+    "nombre": "Luis",
+    "edad": "15",
+    "carrera": "Mecatronica"
+]
+
+alumnoDic.updateValue("nunca", forKey: "sexo")
+print(alumnoDic)
+
+alumnoDic["promedio"] = "8.5"
+print(alumnoDic)
+
+alumnoDic["promedio"] = nil
+print(alumnoDic)
+
+alumnoDic.removeValue(forKey: "sexo")
+print(alumnoDic)
+
+
+//iterar sobre un diccionario
+
+for (llave, valor) in alumnoDic{
+    print ("\(llave) -- \(valor)")
+}
+/*
+for llave in alumnoDic.keys{
+    print("\(llave)", terminator: "")
+}
+*/
+
+//: Conjuntos
+
+//no acepta duplicidad de valores
+var conjunto: Set<Int> = [1, 2, 3, 4, 5, 6, 7, 8, 9, 2]
+print(conjunto)
+
+conjunto.contains(4)
+conjunto.insert(10)
+print(conjunto)
+conjunto.remove(10)
+print (conjunto)
+
+//:Closures
+
+var miniClosure: (Int, Int) -> Int //definicion del closure
+var miniClosure2: (Int, Int) -> Int
+
+miniClosure = {(a: Int, b: Int) -> Int in   //Implementacion del Closure
+    return a*b
+}
+miniClosure2 = {(a: Int, b: Int) -> Int in   //Implementacion del Closure
+    return a+b
+}
+
+func operaciones (_ funcion:(Int, Int) -> Int, x: Int, y: Int){
+    print(funcion(x,y))
+}
+
+operaciones (miniClosure, x: 4, y: 5)
+operaciones (miniClosure2, x: 4, y: 5)
+
+
+//:Acortando los Clousures
+
+miniClosure = {(a, b) in
+    a * b
+}
+
+miniClosure = { $0 * $1}
+ //puede haber closures sincronos o asincronos
+
+
+var closureNoReturn: () -> Void  = {
+    print ("Swift es chevere")
+}
+
+closureNoReturn()
+
+var contador = 0
+let incrementa = {
+    contador += 1
+}
+
+incrementa()
+incrementa()
+incrementa()
+incrementa()
+
+print(contador)
+
+
+func countingClosure() -> () -> Int {
+    var contador = 0
+    let incrementaContador: () -> Int = {
+        contador += 1
+        return contador
+    }
+    return incrementaContador
+}
+
+let contador1 = countingClosure()
+let contador2 = countingClosure()
+
+contador1()
+contador1()
+contador2()
+contador2()
+contador2()
+
+//: Custom Closures
+
+let nombres = ["Pam <3","Abni XDD","Tann :3","Ivan n.n"]
+print(nombres.sorted())
+
+let resultado = nombres.sorted{
+    $0.count > $1.count
+}
+print(resultado)
 
