@@ -1,0 +1,39 @@
+class ViewController: UIViewController {
+
+    @IBOutlet weak var slider: UISlider!
+    @IBOutlet weak var porcentajeSlider: UILabel!
+    @IBOutlet weak var Nivel: UILabel!
+    @IBOutlet weak var imagen: UIImageView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        slider.setThumbImage(#imageLiteral(resourceName: "fuego"), for: .normal)
+        slider.setThumbImage(#imageLiteral(resourceName: "fuego"), for: .highlighted)
+    }
+
+    
+    @IBAction func obtenValorSlider(_ sender: UISlider) {
+        let valor = Int(slider.value * 100)
+        let cadena = ("\(valor) %")
+ 
+        porcentajeSlider.text = cadena
+        
+        switch valor {
+        case 0...33:
+            Nivel.text = "Nivel Bajo"
+        case 34...66:
+            Nivel.text = "Nivel Medio"
+        default:
+            Nivel.text = "Nivel Alto"
+            
+        }
+        
+        view.backgroundColor = UIColor(red: (CGFloat(slider.value)), green: (CGFloat(slider.value)), blue: (CGFloat(slider.value)), alpha:(CGFloat(slider.value)))
+        
+        
+        
+    }
+    
+}
