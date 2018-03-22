@@ -1,0 +1,222 @@
+import UIKit
+
+class Alumno{
+    
+    var nombre: String = ""
+    var edad: Int = 0
+   
+    
+    init (nombre:String, edad:Int){
+        self .nombre = nombre
+        self.edad = edad
+    }
+    
+    init (){
+        self.nombre = "Ninguno"
+        self.edad = 18
+    }
+    
+    init?(edad: Int){    //Inicializador falible
+        if edad < 18{
+            return nil
+        }
+        self.edad = edad
+    }
+    
+    deinit{
+        print("El objeto \(self.nombre) ha desaparecido")
+    }
+}
+
+let ivan = Alumno(nombre: "Ivan", edad: 19)
+let dan = Alumno()
+
+let dummy = ivan
+dummy.nombre
+ivan.nombre = "Sr Ivan"
+
+dummy.nombre
+//clases comparten una misma referencia, en las estructuras no sucede lo mismo pues cada una se hace cargo de sus parametros
+
+
+//optional binding
+if let newIvan = Alumno(edad: 19){
+    print("Se creo el alumno")
+    dump(newIvan) //perimite conocer lo que contiene el objeto que se creo
+}else{
+    print("no se creo el alumno")
+}
+
+//Nil coalescing
+
+let gil = Alumno(edad:12) ?? Alumno()
+dump(gil)
+
+--------------- ********************** -----------------
+
+
+import Foundation
+//referencias weaK Y strong, todas las referencias son strong por default
+
+class Persona{
+    
+    var nombre: String
+    var apellido: String
+    
+    init (nombre: String, apellido: String){
+        self.nombre = nombre
+        self.apellido = apellido
+    }
+}
+class Alumno: Persona{
+    
+    weak var amigo: Alumno?
+    
+    deinit{
+        print("\(self.nombre) ha sido deshalojado")
+    }
+}
+
+var ivan: Alumno? = Alumno(nombre: "Ivan", apellido: "Hernandez")
+
+var julio: Alumno? = Alumno(nombre: "Julio", apellido: "Hernan")
+
+ivan?.amigo = julio
+julio?.amigo = ivan
+
+ivan = nil
+julio = nil
+
+/////////////////////////***************///////////////////
+
+//getters (obtener) and setters (poner)
+
+class Empleado{
+    
+    var total: Double = 0.0
+    var sueldo: Double{
+        
+        get{
+            return 5000.00
+        }
+        set{
+            total = newValue * 1.16
+        }
+    }
+    var tipo: String{
+        get{
+            return "Soy un godin"
+        }
+        
+    }
+}
+
+let daniel = Empleado()
+daniel.tipo
+daniel.sueldo
+daniel.sueldo = 100000
+
+/////////////// ************************* ///////////////////////
+
+import Foundation
+
+class Alumno{
+    var calificacion: Double = 0.0{
+        willSet{
+            print("EL valor sera cambiado a: \(newValue)")
+        }
+        didSet{
+            print("El valor camnbio y antes era: \(oldValue)")
+        }
+    }
+}
+
+var daniel = Alumno()
+
+daniel.calificacion
+daniel.calificacion = 5.0
+daniel.calificacion
+
+///////////// ***************/////////////
+rotocol Deportes{
+    
+    func saltar()
+    func correr()
+}
+
+protocol Actividades: Deportes{
+    func futbol()
+}
+
+
+class Alumno: Deportes{
+    func saltar() {
+        print("Saltando")
+    }
+    func correr() {
+        print("corriendo")
+    }
+}
+
+class Trabajador: Deportes{
+    func saltar() {
+        print("Trabajador saltando")
+    }
+    func correr() {
+        print("Trakbajador corriendo")
+    }
+}
+
+class Egresado: Actividades{
+    func futbol() {
+        <#code#>
+    }
+    
+    func saltar() {
+        <#code#>
+    }
+    
+    func correr() {
+        <#code#>
+    }
+   
+    
+}
+//////////////////// *************** ///////////////////
+
+//Extensions; agregan funcionalidaad a la la clase estuctura que quiera
+
+extension String{
+    func gritar(){
+        print("Gritan la frase: \(uppercased())")
+    }
+}
+
+"Hablando bajito".gritar()
+
+protocol TeamRecord{
+    var wins: Int {get}
+    var losses: Int {get}
+    var winningPercentage: Double {get}
+    
+}
+
+extension TeamRecord{
+    
+    var gamesPlayed: Int{
+        return wins + losses
+    }
+}
+
+struct BaseballRecord: TeamRecord{
+    
+    var wins: Int
+    var losses: Int
+    
+    var winningPercentage: Double{
+        return Double(wins) / Double(wins + losses)
+    }
+}
+
+let equipo = BaseballRecord(wins: 5, losses: 4)
+equipo.winningPercentage
