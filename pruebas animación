@@ -1,0 +1,163 @@
+    let tablero: UIView = {
+        let vista = UIView()
+        vista.backgroundColor = UIColor.brown
+        vista.translatesAutoresizingMaskIntoConstraints = false
+        
+        return vista
+    }()
+    
+    let imagen: UIImageView = {
+        let im = UIImageView()
+        im.image = UIImage(named: "cara")
+       
+        
+        return im
+    }()
+    
+    let controles: UIView = {
+        let ct = UIView()
+        ct.backgroundColor = UIColor.white
+        ct.translatesAutoresizingMaskIntoConstraints = false
+        
+        return ct
+    }()
+    
+    let subir: UIButton = {
+        let sb = UIButton(type: .system)
+        sb.setImage(#imageLiteral(resourceName: "arriba"), for: .normal)
+        sb.layer.cornerRadius = 5
+        sb.layer.masksToBounds = true
+        sb.translatesAutoresizingMaskIntoConstraints = false
+        sb.addTarget(self, action: #selector(AcSubir), for: .touchUpInside)
+
+        
+        return sb
+    }()
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = UIColor.gray
+        
+        view.addSubview(tablero)
+        view.addSubview(controles)
+        
+        
+        tablero.addSubview(imagen)
+        view.addSubview(subir)
+        
+        tablero.frame = CGRect(x: 0.0, y: 0.0, width: 200.0, height: 200.0)
+        tablero.center.x = view.center.x
+        tablero.center.y = view.center.y
+        
+        
+        //subir.centerXAnchor.constraint(equalTo: controles.centerXAnchor).isActive = true
+       
+        controles.frame = CGRect(x: 0.0, y: 0.0, width: 100.0, height: 100.0)
+        controles.center.x = view.center.x
+        
+        imagen.frame = CGRect(x: 0.0, y: 0.0, width: 50.0, height: 50.0)
+        
+        subir.frame = CGRect(x: 15, y: 15, width: 10, height: 10)
+        
+        
+    }
+    
+    @objc func AcSubir(){
+        print("Hola")
+        
+        subir.setImage(#imageLiteral(resourceName: "arriba"), for: .normal)
+        
+    }
+    
+    ************************
+    
+    let tablero: UIView = {
+        let view = UIView()
+        view.backgroundColor = UIColor.blue
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
+        return view
+    }()
+
+    let ImNave: UIImageView = {
+        let nav =  UIImageView()
+        nav.image = UIImage(named: "cara")
+
+        return nav
+    }()
+//
+//    var actionUP: UIButton = {
+//        var subir = UIButton(type: .system)
+//        //subir.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+//        subir.backgroundColor = UIColor.white
+//        subir.layer.cornerRadius = 5
+//        subir.setImage(#imageLiteral(resourceName: "arriba"), for: .normal)
+//
+//
+//        subir.addTarget(self, action: #selector(subir1), for: .touchUpInside)
+//
+//        subir.translatesAutoresizingMaskIntoConstraints = false
+//        return subir
+//    }()
+//
+//    var actionDown: UIButton = {
+//        var bajar = UIButton(type: .system)
+//        bajar.setTitle("^", for: .normal)
+//        bajar.titleLabel?.font = UIFont.boldSystemFont(ofSize: 30)
+//        bajar.backgroundColor = UIColor.white
+//        bajar.layer.cornerRadius = 5
+//
+//        bajar.addTarget(self, action: #selector(bajar1), for: .touchUpInside)
+//
+//        bajar.translatesAutoresizingMaskIntoConstraints = false
+//        return bajar
+//    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.gray
+
+////
+       // vistaNave()
+//        view.addSubview(actionUP)
+        view.addSubview(tablero)
+        
+        //tablero.addSubview(ImNave)
+        
+        tablero.frame = CGRect(x: 0.0, y: 0.0, width: 100, height: 100)
+        tablero.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        tablero.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        
+        
+//        actionUP.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//       // actionUP.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 20).isActive = true
+//
+    }
+//
+//    func vistaNave(){
+//        tablero.addSubview(ImNave)
+//        ImNave.frame = CGRect(x: 0.0, y: 0.0, width: 50, height: 50)
+//        ImNave.center.x = view.center.x
+//        ImNave.center.y = view.center.y
+//    }
+//
+//    @objc func subir1(){
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.ImNave.center.x += 10
+//            })
+//
+//    }
+//
+//    @objc func bajar1(){
+//        UIView.animate(withDuration: 0.5, animations: {
+//            self.ImNave.center.x += 5
+//        })
+//
+    
+
+
+}
