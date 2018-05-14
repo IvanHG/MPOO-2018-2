@@ -40,3 +40,16 @@ class ViewController: UIViewController {
 
 
 sketchappsourses
+
+
+  let gradiente = CAGradientLayer()
+        gradiente.colors = [UIColor(red: 210/255, green: 20/255, blue: 10/255, alpha: 1.0).cgColor, UIColor(red: 280/255, green: 80/255, blue: 30/255, alpha: 1.0).cgColor,  UIColor.white.cgColor]
+        gradiente.frame = view.frame
+        
+        
+        view.layer.insertSublayer(gradiente, at: 0)
+       // view.layer.addSublayer(gradiente)
+        
+       // view.backgroundColor = UIColor.white
+
+
