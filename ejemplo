@@ -53,3 +53,23 @@ sketchappsourses
        // view.backgroundColor = UIColor.white
 
 
+**********************************
+cambiar el titulo del navigation bar 
+
+navigationItem.title = String
+
+****************************************
+obtener datod de firebase teniendo un usuario autenticado en la base de datos
+
+let uid = Auth.auth().currentUser?.uid
+Databasee.database().reference().child("users").child(uid!).observereSingleEventOfType(.value, withBlock: {(sanapshot) in
+    if let dictionary = snapshot.value as? [String: AnyObjet]
+    
+    //se asigna a variable el contenido de key en tipo String
+    variable = dictionary["key"] as? String
+
+
+
+
+
+
